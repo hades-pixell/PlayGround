@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minecraft 3D — Voxel Builder</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' fill='%235fae3f'/><rect y='10' width='16' height='6' fill='%238a5a32'/></svg>" />
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <canvas id="game"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="crosshair">+</div>
+    <div id="stats">
+      <div><b>Minecraft 3D</b> <span id="fps">60 FPS</span></div>
+      <div id="coords">0, 0, 0</div>
+      <div id="mode">Walk · Survival-style build</div>
+    </div>
+    <div id="toast"></div>
+    <div id="hotbar"></div>
+    <div id="hint">LMB break · RMB place · 1–9 / wheel select · F fly · H help · Esc menu</div>
+  </div>
+
+  <!-- Main menu -->
+  <div id="menu" class="overlay">
+    <div class="panel">
+      <div class="logo"><span class="l1">MINECRAFT</span> <span class="l2">3D</span></div>
+      <p class="sub">A tiny voxel sandbox in your browser — explore, mine &amp; build.</p>
+      <div class="row">
+        <label>Seed <input id="seedInput" type="number" value="1337" /></label>
+        <button id="randomSeed" class="ghost" title="Random seed">🎲</button>
+      </div>
+      <button id="playBtn" class="big">▶ &nbsp;Play</button>
+      <button id="continueBtn" class="ghost hidden">Continue saved world</button>
+      <div class="controls-grid">
+        <div><b>W A S D</b><span>move</span></div>
+        <div><b>Mouse</b><span>look</span></div>
+        <div><b>Left click</b><span>mine block</span></div>
+        <div><b>Right click</b><span>place block</span></div>
+        <div><b>Space</b><span>jump / fly up</span></div>
+        <div><b>Shift</b><span>sprint / fly down</span></div>
+        <div><b>F</b><span>toggle fly</span></div>
+        <div><b>1–9 / wheel</b><span>pick block</span></div>
+      </div>
+      <p class="foot">Desktop + mouse recommended · Click Play, then click again to lock the mouse.</p>
+    </div>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause" class="overlay hidden">
+    <div class="panel">
+      <div class="logo small"><span class="l1">PAUSED</span></div>
+      <button id="resumeBtn" class="big">Resume</button>
+      <div class="row btns">
+        <button id="saveBtn" class="ghost">💾 Save</button>
+        <button id="newBtn" class="ghost">🌍 New world</button>
+        <button id="resetBtn" class="ghost danger">♻ Reset edits</button>
+      </div>
+      <p class="foot">World auto-saves edits to this browser.</p>
+    </div>
+  </div>
+
+  <!-- Help -->
+  <div id="help" class="overlay hidden">
+    <div class="panel">
+      <div class="logo small"><span class="l1">HOW TO PLAY</span></div>
+      <ul class="help-list">
+        <li><b>Move</b> with <b>WASD</b>, jump with <b>Space</b>. Hold <b>Shift</b> to sprint.</li>
+        <li><b>Mine</b> with <b>left click</b>, <b>place</b> with <b>right click</b>.</li>
+        <li>Press <b>F</b> to fly (Space up / Shift down), <b>1–9</b> or <b>mouse wheel</b> to change block.</li>
+        <li>Press <b>H</b> anytime for this panel. <b>Esc</b> releases the mouse.</li>
+      </ul>
+      <button id="closeHelp" class="big">Got it</button>
+    </div>
+  </div>
+
+  <div id="lockTip" class="hidden">Click to capture mouse 🖱</div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
